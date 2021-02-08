@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+ int par_size,n,count=0,flag,size,wastage;
+ int ch;
+ printf("enter the number of partitions");
+ scanf("%d",&n);
+ printf("enter the partition size");
+ scanf("%d",&par_size);
+ ch=1;
+ while(ch==1)
+ {
+ flag=0;
+ if(count<n)
+ {
+ printf("enter the size of the job to be executed:");
+  scanf("%d",&size);
+ if(par_size>=size)
+{
+ flag=1;
+ count++;
+ wastage= par_size-size;
+ printf("wastage is %2d\n",wastage);
+}
+}
+ else
+{
+ printf("no partition is free\n");
+ exit(0);
+}
+ if(flag==0)
+ printf("this job cannot be executed\n");
+ printf("enter yout choice(1 or 0)");
+ scanf("%d",&ch);
+}
+}
