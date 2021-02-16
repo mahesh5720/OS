@@ -1,0 +1,38 @@
+#include<stdio.h>
+void main()
+{
+    int nof,pg[50],nopg,i,j=0,k,avail,count=0;
+    printf("enter no. of pages\n");
+    scanf("%d",&nopg);
+    printf("enter pages:\n");
+    for(i=1;i<=nopg;i++)
+    scanf("%d",&pg[i]);
+    printf("enter no. of frames\n");
+    scanf("%d",&nof);
+    int frame[nof];
+    for(i=1;i<nof;i++)
+    {
+        frame[i]=-1;
+    }
+    printf("page_ref\tframes\n");
+    for(i=1;i<nopg;i++)
+    {
+        printf("%d\t",pg[i]);
+        avail=0;
+        for(k=0;k<nof;k++)
+        if(frame[k]==pg[i])
+        avail=1;
+        if(avail==0)
+        {
+            frame[j]=pg[i];
+            j=(j+1)%nof;
+            count++;
+            for(k=0;k<nof;k++)
+            {
+                printf("%d\t",frame[k]);
+            }
+            printf("\n");
+        }
+    }
+    printf("page fault is %d\n",count);
+}
